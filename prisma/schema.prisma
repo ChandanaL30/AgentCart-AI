@@ -1,0 +1,183 @@
+// Prisma Schema for AgentCart AI
+// Database: PostgreSQL with robust agentic commerce models
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum AgentRunStatus {
+  IDLE
+  PLANNING
+  SEARCHING
+  EVALUATING
+  PROPOSING
+  COMPLETED
+  FAILED
+}
+
+enum OptimizationPreference {
+  BEST_VALUE
+  LOWEST_PRICE
+  PREFERRED_BRAND
+}
+
+enum ProposalStatus {
+  PENDING_REVIEW
+  APPROVED
+  REJECTED
+  EXPIRED
+  SUPERSEDED
+}
+
+enum CheckoutStatus {
+  CREATED
+  SAVED
+  APPROVED
+  VOIDED
+  COMPLETED
+  PAYER_ACTION_REQUIRED
+}
+
+model GuestSession {
+  id           String            @id @default(cuid())
+  tokenHash    String            @unique
+  ipHash       String?
+  userAgent    String?
+  expiresAt    DateTime
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+
+  agentRuns        AgentRun[]
+  proposals        PurchaseProposal[]
+  checkoutSessions CheckoutSession[]
+
+  @@index([tokenHash])
+  @@index([expiresAt])
+  @@map("guest_sessions")
+}
+
+model AgentRun {
+  id             String         @id @default(cuid())
+  guestSessionId String
+  query          String
+  constraints    Json           // snapshot of maxBudget, maxDeliveryDays, minRating, preferredBrand, optimizationPreference
+  status         AgentRunStatus @default(IDLE)
+  error          String?
+  createdAt      DateTime       @default(now())
+  completedAt    DateTime?
+
+  session   GuestSession       @relation(fields: [guestSessionId], references: [id], onDelete: Cascade)
+  events    AgentEvent[]
+  proposals PurchaseProposal[]
+
+  @@index([guestSessionId])
+  @@index([status])
+  @@index([createdAt])
+  @@map("agent_runs")
+}
+
+model AgentEvent {
+  id        String   @id @default(cuid())
+  runId     String
+  sequence  Int
+  stage     String   // e.g. "INITIALIZE", "PARSE_INTENT", "CATALOG_SEARCH", "CALCULATE_PRICING", "VERIFY_CONSTRAINTS", "RECOMMENDATION"
+  eventType String   // e.g. "INFO", "WARN", "DATA", "COMPLETE", "ERROR"
+  message   String
+  payload   Json?
+  createdAt DateTime @default(now())
+
+  run AgentRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+
+  @@unique([runId, sequence])
+  @@index([runId, createdAt])
+  @@map("agent_events")
+}
+
+model Product {
+  id               String   @id @default(cuid())
+  externalId       String   @unique
+  title            String
+  description      String
+  category         String
+  brand            String
+  seller           String
+  basePrice        Float
+  currency         String   @default("USD")
+  shippingCost     Float    @default(0.0)
+  estimatedTaxRate Float    @default(0.08)
+  rating           Float    @default(4.5)
+  reviewCount      Int      @default(0)
+  deliveryDays     Int      @default(3)
+  inStock          Boolean  @default(true)
+  imageUrl         String
+  specs            Json?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  proposals PurchaseProposal[]
+
+  @@index([category])
+  @@index([brand])
+  @@index([basePrice])
+  @@index([rating])
+  @@map("products")
+}
+
+model PurchaseProposal {
+  id                  String         @id @default(cuid())
+  runId               String
+  guestSessionId      String
+  productId           String
+  itemPrice           Float
+  shippingCost        Float
+  estimatedTax        Float
+  totalCost           Float
+  currency            String         @default("USD")
+  constraintsSnapshot Json
+  reason              String
+  version             Int            @default(1)
+  expiresAt           DateTime
+  status              ProposalStatus @default(PENDING_REVIEW)
+  createdAt           DateTime       @default(now())
+  updatedAt           DateTime       @updatedAt
+
+  run              AgentRun          @relation(fields: [runId], references: [id], onDelete: Cascade)
+  session          GuestSession      @relation(fields: [guestSessionId], references: [id], onDelete: Cascade)
+  product          Product           @relation(fields: [productId], references: [id], onDelete: Restrict)
+  checkoutSessions CheckoutSession[]
+
+  @@index([runId])
+  @@index([guestSessionId])
+  @@index([productId])
+  @@index([status])
+  @@map("purchase_proposals")
+}
+
+model CheckoutSession {
+  id                 String         @id @default(cuid())
+  proposalId         String
+  guestSessionId     String
+  paypalOrderId      String?        @unique
+  captureStatus      CheckoutStatus @default(CREATED)
+  captureId          String?
+  idempotencyKey     String         @unique
+  amount             Float
+  currency           String         @default("USD")
+  reconciliationData Json?
+  createdAt          DateTime       @default(now())
+  updatedAt          DateTime       @updatedAt
+
+  proposal PurchaseProposal @relation(fields: [proposalId], references: [id], onDelete: Restrict)
+  session  GuestSession     @relation(fields: [guestSessionId], references: [id], onDelete: Cascade)
+
+  @@index([proposalId])
+  @@index([guestSessionId])
+  @@index([paypalOrderId])
+  @@index([idempotencyKey])
+  @@map("checkout_sessions")
+}

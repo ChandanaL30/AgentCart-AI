@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bgc" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#064e3b"/>
+      <stop offset="100%" stop-color="#021a14"/>
+    </radialGradient>
+    <filter id="chairglow">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bgc)"/>
+  <circle cx="200" cy="200" r="120" fill="#10b981" opacity="0.12" filter="url(#chairglow)"/>
+  <!-- Headrest -->
+  <rect x="170" y="70" width="60" height="30" rx="12" fill="#10b981" stroke="#34d399" stroke-width="2"/>
+  <rect x="194" y="100" width="12" height="18" fill="#334155"/>
+  <!-- Backrest Mesh Spine -->
+  <path d="M150 120 C145 180, 150 200, 155 230 L245 230 C250 200, 255 180, 250 120 Z" fill="#0f172a" stroke="#10b981" stroke-width="3"/>
+  <path d="M165 140 L235 140 M160 170 L240 170 M158 200 L242 200" stroke="#059669" stroke-width="2" stroke-dasharray="4,4"/>
+  <!-- Seat Cushion -->
+  <rect x="135" y="235" width="130" height="35" rx="14" fill="#059669" stroke="#34d399" stroke-width="2"/>
+  <!-- Armrests -->
+  <rect x="118" y="175" width="22" height="45" rx="8" fill="#334155"/>
+  <rect x="260" y="175" width="22" height="45" rx="8" fill="#334155"/>
+  <!-- Gas Lift Cylinder -->
+  <rect x="193" y="270" width="14" height="40" fill="#64748b"/>
+  <!-- 5-Star Base -->
+  <path d="M140 330 L200 310 L260 330 M200 310 L160 340 M200 310 L240 340" stroke="#334155" stroke-width="6" stroke-linecap="round"/>
+  <!-- Casters -->
+  <circle cx="140" cy="335" r="5" fill="#10b981"/>
+  <circle cx="260" cy="335" r="5" fill="#10b981"/>
+  <circle cx="160" cy="345" r="5" fill="#10b981"/>
+  <circle cx="240" cy="345" r="5" fill="#10b981"/>
+</svg>

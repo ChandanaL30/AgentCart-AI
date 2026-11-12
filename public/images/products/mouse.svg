@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bgms" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0e3a5a"/>
+      <stop offset="100%" stop-color="#04111d"/>
+    </radialGradient>
+    <linearGradient id="mouseBody" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="50%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <filter id="mouseGlow">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bgms)"/>
+  <circle cx="200" cy="200" r="120" fill="#0284c7" opacity="0.15" filter="url(#mouseGlow)"/>
+  <!-- Ergonomic Mouse Body -->
+  <path d="M140 280 C120 220, 130 140, 190 120 C240 105, 275 140, 275 220 C275 270, 245 300, 200 300 C165 300, 148 295, 140 280 Z" fill="url(#mouseBody)" stroke="#38bdf8" stroke-width="2"/>
+  <!-- Thumb Rest Wing -->
+  <path d="M140 230 C115 240, 110 270, 138 285 Z" fill="#0f172a" stroke="#0ea5e9" stroke-width="1.5"/>
+  <!-- Center Split Line -->
+  <path d="M200 120 L200 190" stroke="#475569" stroke-width="2"/>
+  <!-- Metallic Scroll Wheel -->
+  <rect x="194" y="145" width="12" height="32" rx="6" fill="#0284c7" stroke="#e0f2fe" stroke-width="1.5"/>
+  <line x1="194" y1="155" x2="206" y2="155" stroke="#0f172a" stroke-width="1.5"/>
+  <line x1="194" y1="165" x2="206" y2="165" stroke="#0f172a" stroke-width="1.5"/>
+  <!-- Side Thumb Scroll -->
+  <rect x="132" y="215" width="6" height="20" rx="3" fill="#38bdf8"/>
+  <circle cx="200" cy="225" r="3" fill="#38bdf8" opacity="0.8"/>
+  <text x="145" y="335" font-family="system-ui, sans-serif" font-weight="bold" font-size="11" fill="#7dd3fc" letter-spacing="2">PRECISION WIRELESS</text>
+</svg>

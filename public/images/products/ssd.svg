@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bgssd" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2d1704"/>
+      <stop offset="100%" stop-color="#0f0701"/>
+    </radialGradient>
+    <linearGradient id="ssdbody" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <filter id="ssdglow">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bgssd)"/>
+  <circle cx="200" cy="200" r="110" fill="#f59e0b" opacity="0.12" filter="url(#ssdglow)"/>
+  <!-- SSD Aluminum Shell -->
+  <rect x="110" y="130" width="180" height="140" rx="20" fill="url(#ssdbody)" stroke="#60a5fa" stroke-width="2"/>
+  <rect x="125" y="145" width="150" height="110" rx="14" fill="#1e3a8a" opacity="0.7"/>
+  <!-- USB-C Port -->
+  <rect x="280" y="188" width="18" height="24" rx="6" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
+  <rect x="285" y="195" width="8" height="10" rx="2" fill="#64748b"/>
+  <!-- Status LED -->
+  <circle cx="145" cy="165" r="4" fill="#22d3ee" filter="url(#ssdglow)"/>
+  <!-- Speed lines -->
+  <path d="M145 200 L255 200" stroke="#93c5fd" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+  <path d="M145 212 L225 212" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <text x="145" y="238" font-family="system-ui, sans-serif" font-weight="bold" font-size="14" fill="#ffffff" letter-spacing="2">PORTABLE SSD</text>
+  <text x="145" y="252" font-family="system-ui, sans-serif" font-weight="semibold" font-size="10" fill="#93c5fd">1050 MB/s • USB 3.2</text>
+</svg>

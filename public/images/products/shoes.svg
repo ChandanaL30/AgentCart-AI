@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bgsh" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#450a0a"/>
+      <stop offset="100%" stop-color="#140202"/>
+    </radialGradient>
+    <linearGradient id="shoebody" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#b91c1c"/>
+    </linearGradient>
+    <filter id="shoeglow">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bgsh)"/>
+  <circle cx="200" cy="200" r="120" fill="#f87171" opacity="0.12" filter="url(#shoeglow)"/>
+  <!-- Shoe Upper Outline -->
+  <path d="M90 240 Q130 160 210 160 Q260 170 300 220 Q315 240 320 260 L90 260 Z" fill="url(#shoebody)" stroke="#fca5a5" stroke-width="2"/>
+  <!-- Collar / Ankle Opening -->
+  <path d="M110 230 Q140 190 170 210" fill="none" stroke="#1e293b" stroke-width="12" stroke-linecap="round"/>
+  <!-- Swoosh / Stripe Accent -->
+  <path d="M150 235 Q210 200 270 245" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+  <!-- Laces -->
+  <line x1="175" y1="185" x2="195" y2="185" stroke="#f8fafc" stroke-width="3" stroke-linecap="round"/>
+  <line x1="185" y1="198" x2="208" y2="198" stroke="#f8fafc" stroke-width="3" stroke-linecap="round"/>
+  <line x1="198" y1="212" x2="222" y2="212" stroke="#f8fafc" stroke-width="3" stroke-linecap="round"/>
+  <!-- Foam Midsole -->
+  <rect x="80" y="260" width="245" height="28" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <!-- Rubber Outsole Tread -->
+  <rect x="80" y="284" width="245" height="10" rx="4" fill="#0f172a"/>
+</svg>

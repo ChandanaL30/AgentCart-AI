@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bgcam" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#090514"/>
+    </radialGradient>
+    <linearGradient id="cambody" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <filter id="camglow">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bgcam)"/>
+  <circle cx="200" cy="200" r="120" fill="#818cf8" opacity="0.12" filter="url(#camglow)"/>
+  <!-- Camera Body -->
+  <rect x="85" y="130" width="230" height="145" rx="16" fill="url(#cambody)" stroke="#475569" stroke-width="2"/>
+  <!-- Grip Rubber -->
+  <rect x="85" y="130" width="55" height="145" rx="12" fill="#020617" opacity="0.6"/>
+  <!-- Shutter Button & Dial -->
+  <rect x="100" y="115" width="20" height="15" rx="4" fill="#94a3b8"/>
+  <rect x="130" y="120" width="25" height="10" rx="3" fill="#64748b"/>
+  <!-- Hotshoe & Viewfinder -->
+  <rect x="180" y="112" width="40" height="18" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <!-- Lens Rings -->
+  <circle cx="215" cy="202" r="58" fill="#1e293b" stroke="#f43f5e" stroke-width="2"/>
+  <circle cx="215" cy="202" r="48" fill="#0f172a" stroke="#64748b" stroke-width="3"/>
+  <circle cx="215" cy="202" r="34" fill="#020617"/>
+  <circle cx="215" cy="202" r="22" fill="#0284c7" opacity="0.8"/>
+  <!-- Lens Reflection -->
+  <ellipse cx="207" cy="192" rx="12" ry="8" fill="#ffffff" opacity="0.4" transform="rotate(-30 207 192)"/>
+  <!-- Red Dot Indicator -->
+  <circle cx="160" cy="155" r="4" fill="#ef4444"/>
+</svg>

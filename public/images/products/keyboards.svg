@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bgk" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#083344"/>
+      <stop offset="100%" stop-color="#04121a"/>
+    </radialGradient>
+    <linearGradient id="body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <filter id="keyglow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" rx="32" fill="url(#bgk)"/>
+  <!-- Ambient RGB glow -->
+  <rect x="60" y="130" width="280" height="150" rx="20" fill="#06b6d4" opacity="0.15" filter="url(#keyglow)"/>
+  <!-- Keyboard Base -->
+  <rect x="55" y="125" width="290" height="155" rx="16" fill="url(#body)" stroke="#0891b2" stroke-width="2"/>
+  <!-- Rotary Knob -->
+  <circle cx="318" cy="155" r="14" fill="#0e7490" stroke="#22d3ee" stroke-width="2"/>
+  <circle cx="318" cy="155" r="5" fill="#e0f2fe"/>
+  <!-- Key rows -->
+  <!-- Row 1 -->
+  <g fill="#334155" stroke="#475569" stroke-width="1" rx="4">
+    <rect x="75" y="145" width="22" height="20" rx="4" fill="#0284c7" stroke="#38bdf8"/>
+    <rect x="103" y="145" width="22" height="20" rx="4"/>
+    <rect x="131" y="145" width="22" height="20" rx="4"/>
+    <rect x="159" y="145" width="22" height="20" rx="4"/>
+    <rect x="187" y="145" width="22" height="20" rx="4"/>
+    <rect x="215" y="145" width="22" height="20" rx="4"/>
+    <rect x="243" y="145" width="22" height="20" rx="4"/>
+    <rect x="271" y="145" width="25" height="20" rx="4" fill="#0369a1"/>
+  </g>
+  <!-- Row 2 -->
+  <g fill="#1e293b" stroke="#334155" stroke-width="1" rx="4">
+    <rect x="75" y="172" width="26" height="20" rx="4" fill="#0284c7"/>
+    <rect x="107" y="172" width="22" height="20" rx="4"/>
+    <rect x="135" y="172" width="22" height="20" rx="4" fill="#0e7490"/>
+    <rect x="163" y="172" width="22" height="20" rx="4"/>
+    <rect x="191" y="172" width="22" height="20" rx="4" fill="#0e7490"/>
+    <rect x="219" y="172" width="22" height="20" rx="4"/>
+    <rect x="247" y="172" width="22" height="20" rx="4"/>
+    <rect x="275" y="172" width="48" height="20" rx="4" fill="#0369a1"/>
+  </g>
+  <!-- Row 3 -->
+  <g fill="#1e293b" stroke="#334155" stroke-width="1" rx="4">
+    <rect x="75" y="199" width="32" height="20" rx="4"/>
+    <rect x="113" y="199" width="22" height="20" rx="4"/>
+    <rect x="141" y="199" width="22" height="20" rx="4"/>
+    <rect x="169" y="199" width="22" height="20" rx="4"/>
+    <rect x="197" y="199" width="22" height="20" rx="4"/>
+    <rect x="225" y="199" width="22" height="20" rx="4"/>
+    <rect x="253" y="199" width="42" height="20" rx="4" fill="#0284c7"/>
+  </g>
+  <!-- Spacebar Row -->
+  <g fill="#1e293b" stroke="#334155" stroke-width="1" rx="4">
+    <rect x="75" y="226" width="30" height="20" rx="4"/>
+    <rect x="111" y="226" width="24" height="20" rx="4"/>
+    <rect x="141" y="226" width="115" height="20" rx="4" fill="#0284c7" stroke="#38bdf8"/>
+    <rect x="262" y="226" width="24" height="20" rx="4"/>
+    <rect x="292" y="226" width="32" height="20" rx="4"/>
+  </g>
+</svg>
