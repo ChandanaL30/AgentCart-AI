@@ -1,10 +1,7 @@
 import { z } from "zod";
 
 const envSchema = z.object({
-  DATABASE_URL: z
-    .string()
-    .min(1, "DATABASE_URL is required for PostgreSQL connection")
-    .default("postgresql://postgres:postgres@localhost:5432/agentcart_ai?schema=public"),
+  DATABASE_URL: z.string().optional().default(""),
   SESSION_SECRET: z
     .string()
     .min(16, "SESSION_SECRET must be at least 16 characters for secure guest session tokens")
